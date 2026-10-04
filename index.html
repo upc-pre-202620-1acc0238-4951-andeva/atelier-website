@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier | El taller que se adelanta a la avería</title>
+  <meta name="description" content="Atelier Workshop: diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos, incluso sin señal en la fosa.">
+  <meta name="theme-color" content="#0071eb">
+  
+  <!-- PWA & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/brand/atelier-workshop-icon.svg">
+  <link rel="apple-touch-icon" href="assets/brand/atelier-workshop-icon.png">
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Atelier | El taller que se adelanta a la avería">
+  <meta property="og:description" content="Diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos en Lima, incluso sin señal en la fosa.">
+  <meta property="og:image" content="assets/logo-blue-black.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atelier | Software para Talleres Mecánicos">
+  <meta name="twitter:description" content="Diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos.">
+  <meta name="twitter:image" content="assets/logo-blue-black.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Atelier Workshop",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Android, Web",
+    "description": "Sistema de gestión integral para talleres mecánicos con diagnóstico OBD-II, inventario FIFO y facturación SUNAT.",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "PEN",
+      "lowPrice": "139",
+      "highPrice": "489",
+      "price": "139",
+      "offerCount": "4"
+    }
+  }
+  </script>
+
+  <script>
+    /* Decide antes del primer pintado si corre la intro. Se omite con reduced-motion o ?nointro. */
+    (function () {
+      var root = document.documentElement, play = true;
+      try {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) play = false;
+        if (location.search.indexOf('nointro') !== -1) play = false;
+      } catch (e) {}
+      root.classList.add(play ? 'intro-on' : 'is-ready');
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/satoshi/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/phosphor/style.css">
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Intro: hexágono gira, las letras salen del logo y el lockup viaja a la barra superior -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__bg" id="introBg"></div>
+    <div class="intro__logo logo" id="introLogo" style="--k:.5">
+      <div class="logo__inner">
+        <span class="logo__hex"></span>
+        <span class="logo__letters">
+          <span class="ltr" style="--x:9;--w:128"></span>
+          <span class="ltr" style="--x:137;--w:101"></span>
+          <span class="ltr" style="--x:238;--w:128"></span>
+          <span class="ltr" style="--x:366;--w:75"></span>
+          <span class="ltr" style="--x:441;--w:75"></span>
+          <span class="ltr" style="--x:516;--w:128"></span>
+          <span class="ltr" style="--x:644;--w:116"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__row">
+      <a class="nav__brand" href="#top" aria-label="Atelier Workshop">
+        <img src="assets/logo-blue-black.png" alt="Atelier Workshop" class="brand-logo light-only">
+        <img src="assets/logo-blue-white.png" alt="Atelier Workshop" class="brand-logo dark-only">
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#producto" data-i18n="nav.product">Producto</a>
+        <a href="#como" data-i18n="nav.how">Cómo funciona</a>
+        <a href="#roles" data-i18n="nav.roles">Roles</a>
+        <a href="#precios" data-i18n="nav.pricing">Precios</a>
+        <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+        <a href="#equipo" data-i18n="nav.team">Equipo</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="nav__ctrl lang-toggle" id="langToggle" aria-label="Cambiar idioma" title="ES / EN">
+          <span class="lang-opt lang-opt--es is-active">ES</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt lang-opt--en">EN</span>
+        </button>
+        <button class="nav__ctrl theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" title="Tema">
+          <i class="ph ph-sun light-only"></i>
+          <i class="ph ph-moon dark-only"></i>
+        </button>
+        <button class="btn btn--primary btn--sm nav__demo-btn" data-open-modal="demo" data-plan="pro" data-i18n="nav.demo">Pedir Demo</button>
+        <button class="nav__ctrl nav__menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer Móvil -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer__content">
+      <div class="mobile-drawer__top">
+        <span class="eyebrow"><span class="dot"></span> Menú</span>
+        <button class="nav__ctrl mobile-drawer__close" id="mobileDrawerClose" aria-label="Cerrar menú">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <nav class="mobile-drawer__links">
+        <a href="#producto" class="drawer-link" data-i18n="nav.product">Producto</a>
+        <a href="#como" class="drawer-link" data-i18n="nav.how">Cómo funciona</a>
+        <a href="#roles" class="drawer-link" data-i18n="nav.roles">Roles</a>
+        <a href="#precios" class="drawer-link" data-i18n="nav.pricing">Precios</a>
+        <a href="#faq" class="drawer-link" data-i18n="nav.faq">Preguntas</a>
+        <a href="#equipo" class="drawer-link" data-i18n="nav.team">Equipo</a>
+        <a href="#instalar" class="drawer-link" data-i18n="nav.install">Instalar app</a>
+      </nav>
+      <div class="mobile-drawer__footer">
+        <button class="btn btn--primary btn--block drawer-link" data-open-modal="demo" data-plan="pro" data-i18n="nav.demo">Pedir Demo</button>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <main id="top">
+
+  </main>
+
+  <script src="i18n.js?v=13"></script>
+  <script src="main.js?v=13"></script>
+</body>
+</html>
