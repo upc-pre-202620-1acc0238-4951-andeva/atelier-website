@@ -195,6 +195,44 @@
     <!-- Isotipo decorativo scroll-driven -->
     <div class="scroll-hex" id="scrollHex" aria-hidden="true"></div>
 
+    <!-- CONTEXTO -->
+    <section class="stats wrap" aria-label="Contexto del problema">
+      <div class="stats__grid">
+        <div class="stat reveal"><b class="stat__n" data-count-to="3" data-count-suffix="–4×">3–4×</b><p data-i18n="stats.stat1_text">más caro resulta reparar una avería grave que prevenirla a tiempo.</p></div>
+        <div class="stat reveal" style="--d:80ms"><b class="stat__n" data-count-to="14" data-count-suffix="+ años">14+ años</b><p data-i18n="stats.stat2_text">de antigüedad promedio tiene la flota vehicular en circulación en Lima.</p></div>
+        <div class="stat reveal" style="--d:160ms"><b class="stat__n" data-count-to="57.6" data-count-suffix="%">57.6%</b><p data-i18n="stats.stat3_text">de los dueños que probó un software de gestión terminó frustrado por su complejidad.</p></div>
+      </div>
+      <p class="stats__src mono" data-i18n="stats.source">Cifras del informe del proyecto Atelier, con datos de AAP 2023 y Fundación Telefónica 2023.</p>
+    </section>
+
+    <!-- CONTRASTE: gestion tradicional vs Atelier -->
+    <section class="contrast wrap" id="contraste" aria-labelledby="contrastTitle">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="contrast.eyebrow">Antes y después</span></p>
+        <h2 id="contrastTitle" data-i18n="contrast.title">De perder dinero en la libreta a controlar cada repuesto.</h2>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="reveal rounded-3xl border border-border-card-light bg-card-white p-8 dark:border-border-card-dark/20 dark:bg-card-black">
+          <h3 class="text-2xl font-bold text-text-black dark:text-text-white" data-i18n="contrast.old_title">Taller tradicional</h3>
+          <ul class="mt-6 flex flex-col gap-4 text-[15px] leading-snug text-text-black/70 dark:text-text-subtitles">
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_1">Órdenes en papel y audios de WhatsApp que se pierden</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_2">Repuestos sin costo real y mermas que nadie explica</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_3">Clientes que desconfían del presupuesto</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_4">Cierre de caja y comprobantes a mano al final del día</span></li>
+          </ul>
+        </article>
+        <article class="reveal rounded-3xl border-2 border-primary bg-card-white p-8 shadow-lg shadow-primary/15 dark:bg-card-black" style="--d:100ms">
+          <h3 class="text-2xl font-bold text-text-black dark:text-text-white"><span data-i18n="contrast.new_pre">Con</span> <span class="font-imagotipo text-primary">Atelier</span></h3>
+          <ul class="mt-6 flex flex-col gap-4 text-[15px] leading-snug text-text-black dark:text-text-white">
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_1">Orden digital sincronizada en tiempo real, también sin internet en la fosa</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_2">Control exacto de repuestos por lote FIFO y margen real por reparación</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_3">Diagnóstico OBD-II en vivo y reportes preventivos con IA que respaldan cada cobro</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_4">Comprobantes electrónicos válidos ante SUNAT en menos de 2 minutos</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
   </main>
 
   <script src="i18n.js?v=13"></script>
