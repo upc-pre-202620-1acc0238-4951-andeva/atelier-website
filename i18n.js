@@ -11,6 +11,10 @@ var ATELIER_I18N = {
     'nav.pricing': 'Precios',
     'nav.team': 'Equipo',
     'nav.install': 'Instalar app',
+
+    // WhatsApp
+    'wa.tooltip': '¿Tienes dudas? Chatea con un asesor',
+
     // Hero
     'hero.eyebrow': 'Atelier Workshop · talleres mecánicos de Lima',
     'hero.h1_1': 'El taller que',
@@ -33,11 +37,13 @@ var ATELIER_I18N = {
     'hero.float_fifo_title': 'Repuesto asignado',
     'hero.float_fifo_sub': 'Lote más antiguo primero',
     'hero.phone_note': 'Vista de ejemplo',
+
     // Contexto / Stats
     'stats.stat1_text': 'más caro resulta reparar una avería grave que prevenirla a tiempo.',
     'stats.stat2_text': 'de antigüedad promedio tiene la flota vehicular en circulación en Lima.',
     'stats.stat3_text': 'de los dueños que probó un software de gestión terminó frustrado por su complejidad.',
     'stats.source': 'Cifras del informe del proyecto Atelier, con datos de AAP 2023 y Fundación Telefónica 2023.',
+    
     // Cómo funciona
     'how.eyebrow': 'Cómo funciona',
     'how.title': 'De la fosa a la factura en tres pasos.',
@@ -47,9 +53,11 @@ var ATELIER_I18N = {
     'how.step2_desc': 'Los hallazgos se vuelven presupuesto con mano de obra y repuestos. El cliente aprueba viendo las fotos de la pieza dañada.',
     'how.step3_title': 'Cobra sin doble trabajo',
     'how.step3_desc': 'Cada repuesto descuenta de su lote de compra y la orden cierra con boleta o factura electrónica válida ante SUNAT.',
+    
     // Nav additions
     'nav.faq': 'Preguntas',
     'nav.demo': 'Pedir Demo',
+    
     // Hero (reportes IA) y contraste antes/despues
     'hero.proof_ai': 'Reportes preventivos con IA',
     'contrast.eyebrow': 'Antes y después',
@@ -64,6 +72,57 @@ var ATELIER_I18N = {
     'contrast.new_2': 'Control exacto de repuestos por lote FIFO y margen real por reparación',
     'contrast.new_3': 'Diagnóstico OBD-II en vivo y reportes preventivos con IA que respaldan cada cobro',
     'contrast.new_4': 'Comprobantes electrónicos válidos ante SUNAT en menos de 2 minutos',
+
+    // Producto
+    'prod.eyebrow': 'Producto',
+    'prod.title': 'Hecho para el trabajo real del taller.',
+    'prod.lead': 'Menos papel, menos fugas de dinero y ninguna orden que se pierda cuando se cae la señal.',
+    'prod.tile_a_title': 'Telemetría OBD-II en vivo',
+    'prod.tile_a_desc': 'Códigos de falla y parámetros del motor antes de desarmar nada.',
+    'prod.tile_a_example': 'Lectura de ejemplo',
+    'prod.tile_b_title': 'Offline-First',
+    'prod.tile_b_desc': 'La fosa no tiene señal, Atelier sí funciona. Guarda todo en el equipo y sincroniza cuando el mecánico sale.',
+    'prod.tile_c_title': 'Evidencia fotográfica inmutable',
+    'prod.tile_c_desc': 'Fotos de recepción y de piezas desmontadas quedan selladas en la orden. Se acabaron los reclamos por daños previos.',
+    'prod.tile_d_title': 'Asistencia por geocerca',
+    'prod.tile_d_desc': 'Ingreso y salida validados por GPS dentro del taller.',
+    'prod.tile_e_title': 'Inventario FIFO por lote',
+    'prod.tile_e_desc': 'Cada repuesto descuenta del lote más antiguo. Ves el margen real de cada orden, no una estimación.',
+    'prod.tile_f_title': 'Facturación SUNAT',
+    'prod.tile_f_desc': 'Boletas y facturas electrónicas UBL 2.1 desde la orden terminada.',
+
+    // Roles
+    'roles.eyebrow': 'Dos interfaces',
+    'roles.title': 'Una herramienta para cada rol.',
+    'roles.r1_tag': 'App Móvil · En la bahía',
+    'roles.r1_title': 'Para el mecánico',
+    'roles.r1_desc': 'Lectura OBD-II vía Bluetooth, captura de fotos y checklist de recepción sin necesidad de conexión permanente.',
+    'roles.r1_f1': 'Diagnóstico OBD-II inalámbrico',
+    'roles.r1_f2': 'Fotos de evidencias selladas en la orden',
+    'roles.r1_f3': 'Cronómetro y tiempos de mano de obra',
+    'roles.r1_f4': 'Sincronización automática al recuperar señal',
+    'roles.r2_tag': 'Panel Web · En la oficina',
+    'roles.r2_title': 'Para el dueño y jefe de taller',
+    'roles.r2_desc': 'Tablero de bahías en tiempo real, kardex FIFO por lote, control de asistencia por GPS y emisión de boletas/facturas SUNAT.',
+    'roles.r2_f1': 'Tablero Kanban de órdenes y bahías',
+    'roles.r2_f2': 'Kardex FIFO por lote con margen real',
+    'roles.r2_f3': 'Facturación electrónica SUNAT nativa',
+    'roles.r2_f4': 'Asistencia y productividad por mecánico',
+
+    // Equipo
+    'team.eyebrow': 'El equipo',
+    'team.title': 'Quiénes construyen Atelier.',
+    'team.lead': 'Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC). Desarrollamos cerca de los talleres de Lima.',
+    'team.m1_role': 'Frontend y UX',
+    'team.m1_desc': 'Diseño de interfaz y experiencia de usuario para talleres.',
+    'team.m2_role': 'Líder de Proyecto',
+    'team.m2_desc': 'Arquitectura del sistema y coordinación técnica.',
+    'team.m3_role': 'Backend y Base de Datos',
+    'team.m3_desc': 'Lógica de negocio, APIs y persistencia de datos.',
+    'team.m4_role': 'Móvil y Offline',
+    'team.m4_desc': 'Desarrollo de la app para mecánicos en bahía.',
+    'team.m5_role': 'Backend y APIs',
+    'team.m5_desc': 'APIs REST escalables y código mantenible.',
   },
 
   en: {
@@ -76,6 +135,10 @@ var ATELIER_I18N = {
     'nav.install': 'Install app',
     'nav.faq': 'FAQ',
     'nav.demo': 'Request Demo',
+
+    // WhatsApp
+    'wa.tooltip': 'Questions? Chat with an advisor',
+
     // Hero
     'hero.eyebrow': 'Atelier Workshop · auto repair shops in Lima',
     'hero.h1_1': 'The workshop that',
@@ -126,5 +189,56 @@ var ATELIER_I18N = {
     'contrast.new_2': 'Exact parts control by FIFO batch and true margin per repair',
     'contrast.new_3': 'Live OBD-II diagnostics and preventive AI reports that back every charge',
     'contrast.new_4': 'Electronic invoices valid before SUNAT in under 2 minutes',
+
+    // Product
+    'prod.eyebrow': 'Product',
+    'prod.title': 'Engineered for real shop floor work.',
+    'prod.lead': 'Less paperwork, zero inventory leaks, and no work orders lost when cellular signal drops.',
+    'prod.tile_a_title': 'Live OBD-II Telemetry',
+    'prod.tile_a_desc': 'Trouble codes and engine parameters before disassembling anything.',
+    'prod.tile_a_example': 'Sample readout',
+    'prod.tile_b_title': 'Offline-First',
+    'prod.tile_b_desc': 'No signal in the pit? Atelier keeps running. Stores everything locally and syncs once the mechanic steps out.',
+    'prod.tile_c_title': 'Immutable Photo Evidence',
+    'prod.tile_c_desc': 'Intake and disassembled parts photos are sealed into the order. Eliminating false damage claims forever.',
+    'prod.tile_d_title': 'Geofenced Attendance',
+    'prod.tile_d_desc': 'Check-in and check-out validated by GPS right inside the workshop boundaries.',
+    'prod.tile_e_title': 'FIFO Batch Inventory',
+    'prod.tile_e_desc': 'Every spare part deducts from the oldest batch. Track true profit margin per order, not an estimate.',
+    'prod.tile_f_title': 'SUNAT Invoicing',
+    'prod.tile_f_desc': 'Electronic receipts and invoices (UBL 2.1) directly from completed work orders.',
+
+    // Roles
+    'roles.eyebrow': 'Two interfaces',
+    'roles.title': 'A dedicated tool for every role.',
+    'roles.r1_tag': 'Mobile App · In the bay',
+    'roles.r1_title': 'For the mechanic',
+    'roles.r1_desc': 'Bluetooth OBD-II reading, photo evidence, and intake checklists without requiring a constant network connection.',
+    'roles.r1_f1': 'Wireless OBD-II vehicle diagnostics',
+    'roles.r1_f2': 'Photo evidence sealed inside the order',
+    'roles.r1_f3': 'Bay timer and labor duration tracking',
+    'roles.r1_f4': 'Automatic sync upon signal recovery',
+    'roles.r2_tag': 'Web Dashboard · In the office',
+    'roles.r2_title': 'For the shop owner & manager',
+    'roles.r2_desc': 'Real-time bay Kanban, FIFO inventory tracking with real cost, GPS attendance, and native SUNAT invoice issuance.',
+    'roles.r2_f1': 'Kanban board for work orders and bays',
+    'roles.r2_f2': 'FIFO inventory tracking with true margins',
+    'roles.r2_f3': 'Native SUNAT electronic invoicing',
+    'roles.r2_f4': 'Staff attendance and mechanic productivity',
+
+    // Team
+    'team.eyebrow': 'The Team',
+    'team.title': 'Who is building Atelier.',
+    'team.lead': 'Software Engineering at Universidad Peruana de Ciencias Aplicadas (UPC). Developing alongside Lima mechanics.',
+    'team.m1_role': 'Frontend & UX',
+    'team.m1_desc': 'Interface and user experience design for workshops.',
+    'team.m2_role': 'Project Leader',
+    'team.m2_desc': 'System architecture and technical coordination.',
+    'team.m3_role': 'Backend & Databases',
+    'team.m3_desc': 'Business logic, APIs, and data persistence.',
+    'team.m4_role': 'Mobile & Offline',
+    'team.m4_desc': 'Mechanic bay application development.',
+    'team.m5_role': 'Backend & APIs',
+    'team.m5_desc': 'Scalable REST APIs and clean maintainable code.',
   }
 };
