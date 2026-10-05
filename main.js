@@ -90,6 +90,58 @@
   }
 
   /* ============================================================
+     INSTALL LINKS & PWA - URLs come from config.js (ATELIER_CONFIG)
+     ============================================================ */
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.querySelectorAll('[data-install="web"]').forEach(function (btn) {
+      btn.classList.remove('is-soon');
+      btn.removeAttribute('aria-disabled');
+    });
+  });
+
+  function initInstallLinks() {
+    var cfg = window.ATELIER_CONFIG || {};
+    document.querySelectorAll('[data-install]').forEach(function (a) {
+      var type = a.getAttribute('data-install');
+      var url = cfg[type + 'Url'];
+      if (url) {
+        a.setAttribute('href', url);
+        if (/^https?:/i.test(url)) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+      } else if (type === 'web') {
+        a.addEventListener('click', function (e) {
+          if (deferredPrompt) {
+            e.preventDefault();
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(function () { deferredPrompt = null; });
+          } else {
+            // Si no hay PWA prompt ni URL, abre el modal de demo
+            e.preventDefault();
+            openModal('pro');
+          }
+        });
+      } else {
+        // Not published yet: keep the button but make it inert
+        a.setAttribute('aria-disabled', 'true');
+        a.classList.add('is-soon');
+        a.addEventListener('click', function (e) { e.preventDefault(); });
+      }
+    });
+  }
+
+  function initServiceWorker() {
+    if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function (err) {
+          console.warn('SW registration failed:', err);
+        });
+      });
+    }
+  }
+
+  /* ============================================================
      DRAWER MÓVIL
      ============================================================ */
   function initMobileDrawer() {
@@ -218,6 +270,18 @@
     function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 8); }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ============================================================
+     WHATSAPP FLOAT
+     ============================================================ */
+  function initWhatsApp() {
+    var waBtn = document.getElementById('waFloat');
+    if (!waBtn) return;
+    var cfg = window.ATELIER_CONFIG || {};
+    var num = cfg.whatsappNumber || '51999999999';
+    var msg = encodeURIComponent(cfg.whatsappMessage || 'Hola, me interesa conocer más sobre Atelier Workshop para mi taller.');
+    waBtn.setAttribute('href', 'https://wa.me/' + num + '?text=' + msg);
   }
 
   /* ============================================================
