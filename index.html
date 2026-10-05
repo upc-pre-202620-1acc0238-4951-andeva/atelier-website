@@ -258,7 +258,142 @@
       </ol>
     </section>
 
+    <!-- PRODUCTO / BENTO -->
+    <section class="prod wrap" id="producto">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="prod.eyebrow">Producto</span></p>
+        <h2 data-i18n="prod.title">Hecho para el trabajo real del taller.</h2>
+        <p class="lead" data-i18n="prod.lead">Menos papel, menos fugas de dinero y ninguna orden que se pierda cuando se cae la señal.</p>
+      </header>
+      <div class="bento">
+        <article class="tile tile--a reveal">
+          <i class="ph ph-plugs-connected tile__ic"></i>
+          <h3 data-i18n="prod.tile_a_title">Telemetría OBD-II en vivo</h3>
+          <p data-i18n="prod.tile_a_desc">Códigos de falla y parámetros del motor antes de desarmar nada.</p>
+          <div class="readout mono" aria-hidden="true">
+            <div><span>DTC</span><b>P0301</b></div>
+            <div><span>RPM</span><b>780</b></div>
+            <div><span>REFRIGERANTE</span><b>92 °C</b></div>
+            <div><span>BATERÍA</span><b>13.8 V</b></div>
+            <p><i class="live"></i><span data-i18n="prod.tile_a_example">Lectura de ejemplo</span></p>
+          </div>
+        </article>
+        <article class="tile tile--b reveal" style="--d:70ms">
+          <i class="ph ph-wifi-slash tile__ic"></i>
+          <h3 data-i18n="prod.tile_b_title">Offline-First</h3>
+          <p data-i18n="prod.tile_b_desc">La fosa no tiene señal, Atelier sí funciona. Guarda todo en el equipo y sincroniza cuando el mecánico sale.</p>
+        </article>
+        <article class="tile tile--c reveal" style="--d:110ms">
+          <i class="ph ph-camera tile__ic"></i>
+          <h3 data-i18n="prod.tile_c_title">Evidencia fotográfica inmutable</h3>
+          <p data-i18n="prod.tile_c_desc">Fotos de recepción y de piezas desmontadas quedan selladas en la orden. Se acabaron los reclamos por daños previos.</p>
+        </article>
+        <article class="tile tile--d reveal" style="--d:150ms">
+          <i class="ph ph-map-pin-area tile__ic"></i>
+          <h3 data-i18n="prod.tile_d_title">Asistencia por geocerca</h3>
+          <p data-i18n="prod.tile_d_desc">Ingreso y salida validados por GPS dentro del taller.</p>
+        </article>
+        <article class="tile tile--e reveal">
+          <i class="ph ph-stack tile__ic"></i>
+          <h3 data-i18n="prod.tile_e_title">Inventario FIFO por lote</h3>
+          <p data-i18n="prod.tile_e_desc">Cada repuesto descuenta del lote más antiguo. Ves el margen real de cada orden, no una estimación.</p>
+        </article>
+        <article class="tile tile--f reveal" style="--d:80ms">
+          <i class="ph ph-receipt tile__ic"></i>
+          <h3 data-i18n="prod.tile_f_title">Facturación SUNAT</h3>
+          <p data-i18n="prod.tile_f_desc">Boletas y facturas electrónicas UBL 2.1 desde la orden terminada.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROLES -->
+    <section class="roles wrap" id="roles">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="roles.eyebrow">Dos interfaces</span></p>
+        <h2 data-i18n="roles.title">Una herramienta para cada rol.</h2>
+      </header>
+      <div class="roles__grid">
+        <article class="role role--light reveal">
+          <p class="role__tag mono" data-i18n="roles.r2_tag">PANEL WEB · EN LA OFICINA</p>
+          <h3 data-i18n="roles.r2_title">Para el dueño y jefe de taller</h3>
+          <p class="lead role__desc" data-i18n="roles.r2_desc">Tablero de bahías en tiempo real, kardex FIFO por lote, control de asistencia por GPS y emisión de boletas/facturas SUNAT.</p>
+          <ul>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f1">Tablero Kanban de órdenes y bahías</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f2">Kardex FIFO por lote con margen real</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f3">Facturación electrónica SUNAT nativa</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f4">Asistencia y productividad por mecánico</span></li>
+          </ul>
+        </article>
+        <article class="role role--dark reveal" style="--d:100ms">
+          <p class="role__tag mono" data-i18n="roles.r1_tag">APP MÓVIL · EN LA BAHÍA</p>
+          <h3 data-i18n="roles.r1_title">Para el mecánico</h3>
+          <p class="lead role__desc" data-i18n="roles.r1_desc">Lectura OBD-II vía Bluetooth, captura de fotos y checklist de recepción sin necesidad de conexión permanente.</p>
+          <ul>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f1">Diagnóstico OBD-II inalámbrico</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f2">Fotos de evidencias selladas en la orden</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f3">Cronómetro y tiempos de mano de obra</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f4">Sincronización automática al recuperar señal</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="team wrap" id="equipo">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="team.eyebrow">El equipo</span></p>
+        <h2 data-i18n="team.title">Quiénes construyen Atelier.</h2>
+        <p class="lead" data-i18n="team.lead">Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC). Desarrollamos cerca de los talleres de Lima.</p>
+      </header>
+      <ul class="team__row">
+        <li class="member reveal">
+          <div class="member__ph"><img src="assets/team/daniel.jpg" alt="Luis Daniel Granda Ibarra" width="320" height="400" loading="lazy"></div>
+          <h3>Luis Daniel<br>Granda Ibarra</h3>
+          <p class="member__role mono" data-i18n="team.m1_role">Frontend y UX</p>
+          <p class="member__line" data-i18n="team.m1_desc">Diseño de interfaz y experiencia de usuario para talleres.</p>
+        </li>
+        <li class="member reveal" style="--d:70ms">
+          <div class="member__ph"><img src="assets/team/joel.jpg" alt="Joel Huamani Estefanero" width="320" height="400" loading="lazy"></div>
+          <h3>Joel<br>Huamani Estefanero</h3>
+          <p class="member__role mono" data-i18n="team.m2_role">Líder de Proyecto</p>
+          <p class="member__line" data-i18n="team.m2_desc">Arquitectura del sistema y coordinación técnica.</p>
+        </li>
+        <li class="member reveal" style="--d:140ms">
+          <div class="member__ph"><img src="assets/team/alvaro.jpg" alt="Alvaro Rocha Cotrina" width="320" height="400" loading="lazy"></div>
+          <h3>Alvaro<br>Rocha Cotrina</h3>
+          <p class="member__role mono" data-i18n="team.m3_role">Backend y Base de Datos</p>
+          <p class="member__line" data-i18n="team.m3_desc">Lógica de negocio, APIs y persistencia de datos.</p>
+        </li>
+        <li class="member reveal" style="--d:210ms">
+          <div class="member__ph"><img src="assets/team/adiel.jpg" alt="Adiel Abdiaz Sanchez Santin" width="320" height="400" loading="lazy"></div>
+          <h3>Adiel<br>Sanchez Santin</h3>
+          <p class="member__role mono" data-i18n="team.m4_role">Móvil y Offline</p>
+          <p class="member__line" data-i18n="team.m4_desc">Desarrollo de la app para mecánicos en bahía.</p>
+        </li>
+        <li class="member reveal" style="--d:280ms">
+          <div class="member__ph"><img src="assets/team/mauricio.jpg" alt="Mauricio Teran Zavala" width="320" height="400" loading="lazy"></div>
+          <h3>Mauricio<br>Teran Zavala</h3>
+          <p class="member__role mono" data-i18n="team.m5_role">Backend y APIs</p>
+          <p class="member__line" data-i18n="team.m5_desc">APIs REST escalables y código mantenible.</p>
+        </li>
+      </ul>
+    </section>
   </main>
+
+  <footer class="foot">
+    <div class="wrap foot__row">
+      <a class="foot__brand" href="#top" aria-label="Atelier Workshop">
+        <img src="assets/logo-blue-white.png" alt="Atelier Workshop" class="brand-logo">
+      </a>
+      <p data-i18n="foot.text">Atelier es un producto de Andeva. Proyecto de Ingeniería de Software, Universidad Peruana de Ciencias Aplicadas.</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <i class="ph ph-whatsapp-logo"></i>
+    <span class="wa-float__tooltip" data-i18n="wa.tooltip">¿Tienes dudas? Chatea con un asesor</span>
+  </a>
 
   <script src="i18n.js?v=13"></script>
   <script src="main.js?v=13"></script>
