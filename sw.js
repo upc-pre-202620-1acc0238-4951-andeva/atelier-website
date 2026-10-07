@@ -2,14 +2,13 @@
  * Atelier Workshop - Service Worker (offline cache).
  * Network first: always serves the latest deploy and falls back to cache offline.
  */
-const CACHE_NAME = 'atelier-cache-v2';
+const CACHE_NAME = 'atelier-cache-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './styles.css',
   './main.js',
   './i18n.js',
-  './config.js',
   './manifest.webmanifest',
   './assets/vendor/phosphor/style.css',
   './assets/vendor/phosphor/Phosphor.woff2',

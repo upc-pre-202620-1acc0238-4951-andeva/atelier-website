@@ -649,6 +649,15 @@
   
 
   if (root.classList.contains('is-shot')) root.classList.remove('intro-on');
-  else if (root.classList.contains('intro-on')) playIntro();
+  else if (root.classList.contains('intro-on')) {
+    /* Wait for fonts, hex mask and nav logo so the first load measures real sizes */
+    var started = false;
+    var startIntro = function () { if (!started) { started = true; playIntro(); } };
+    if (document.readyState === 'complete') startIntro();
+    else {
+      window.addEventListener('load', startIntro);
+      setTimeout(startIntro, 2500);
+    }
+  }
   else revealHero();
 })();

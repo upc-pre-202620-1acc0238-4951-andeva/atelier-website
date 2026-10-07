@@ -7,5 +7,6 @@ class H(http.server.SimpleHTTPRequestHandler):
         self.send_header('Cache-Control', 'no-store')
         super().end_headers()
 
-socketserver.TCPServer.allow_reuse_address = True
-socketserver.TCPServer(('', PORT), H).serve_forever()
+socketserver.ThreadingTCPServer.allow_reuse_address = True
+socketserver.ThreadingTCPServer.daemon_threads = True
+socketserver.ThreadingTCPServer(('', PORT), H).serve_forever()
