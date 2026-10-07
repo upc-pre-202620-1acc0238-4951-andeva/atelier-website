@@ -1,6 +1,6 @@
 /**
  * Atelier Workshop - landing behaviour.
- * Sections: helpers, theme, i18n, mobile drawer, scroll effects,
+ * Sections: helpers, theme, i18n, install links, scroll effects,
  * live telemetry, intro animation, boot.
  */
 (function () {
@@ -15,6 +15,9 @@
   var EASE_OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
   var EASE_IO = 'cubic-bezier(0.77, 0, 0.175, 1)';
   var HAS_IO = 'IntersectionObserver' in window;
+
+  var renderPricing = function () {};
+  var currentLang = function () { return root.getAttribute('lang') || 'es'; };
 
   /* ---------- Helpers ---------- */
   function store(key, value) {
@@ -83,6 +86,7 @@
       // The hero lead is split in words for the lit-text effect: rebuild it
       var lit = document.querySelector('.lit-text');
       if (lit && dict['hero.lead']) lit.innerHTML = wrapWords(dict['hero.lead'], 'lit');
+      renderPricing();
     }
 
     apply(current);
@@ -180,6 +184,173 @@
     });
   }
 
+  /* ============================================================
+     MODAL DEMO
+     ============================================================ */
+  var demoModal = document.getElementById('demoModal');
+  var formView = document.getElementById('modalFormView');
+  var successView = document.getElementById('modalSuccessView');
+  var planSelect = document.getElementById('demoPlan');
+
+  function openModal(plan) {
+    if (!demoModal) return;
+    if (plan && planSelect) planSelect.value = plan;
+    if (formView) formView.style.display = 'block';
+    if (successView) successView.style.display = 'none';
+    demoModal.classList.add('is-open');
+    demoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var firstInput = demoModal.querySelector('input');
+    if (firstInput) setTimeout(function () { firstInput.focus(); }, 100);
+  }
+
+  function closeModal() {
+    if (!demoModal) return;
+    demoModal.classList.remove('is-open');
+    demoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function initDemoModal() {
+    if (!demoModal) return;
+    var closeBtn = document.getElementById('modalCloseBtn');
+    var successCloseBtn = document.getElementById('modalSuccessCloseBtn');
+    var form = document.getElementById('demoForm');
+
+    document.querySelectorAll('[data-open-modal="demo"]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var plan = btn.getAttribute('data-plan') || 'pro';
+        openModal(plan);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+
+    demoModal.addEventListener('click', function (e) {
+      if (e.target === demoModal) closeModal();
+    });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && demoModal.classList.contains('is-open')) closeModal();
+    });
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var submitBtn = document.getElementById('modalSubmitBtn');
+        if (submitBtn) {
+          submitBtn.setAttribute('disabled', 'true');
+          submitBtn.style.opacity = '0.7';
+        }
+        setTimeout(function () {
+          if (formView) formView.style.display = 'none';
+          if (successView) successView.style.display = 'flex';
+          form.reset();
+          if (submitBtn) {
+            submitBtn.removeAttribute('disabled');
+            submitBtn.style.opacity = '';
+          }
+        }, 600);
+      });
+    }
+  }
+
+  /* ============================================================
+     PRICING - monthly / annual toggle and free-trial links
+     ============================================================ */
+  function initPricing() {
+    var billing = 'monthly';
+    var opts = document.querySelectorAll('[data-billing]');
+
+    renderPricing = function () {
+      var dict = (typeof ATELIER_I18N !== 'undefined' && (ATELIER_I18N[currentLang()] || ATELIER_I18N.es)) || {};
+      document.querySelectorAll('.price-card .val[data-monthly]').forEach(function (el) {
+        el.textContent = el.getAttribute(billing === 'annual' ? 'data-annual' : 'data-monthly');
+      });
+      document.querySelectorAll('[data-note]').forEach(function (el) {
+        var kind = el.getAttribute('data-note');
+        var text = '';
+        if (kind === 'custom') text = dict['pricing.note_custom'] || '';
+        else if (billing === 'annual') {
+          text = (dict['pricing.note_annual'] || '').replace('{total}', el.getAttribute('data-total')).replace('{save}', el.getAttribute('data-save'));
+        } else text = dict['pricing.note_monthly'] || '';
+        el.textContent = text;
+      });
+      opts.forEach(function (b) {
+        var on = b.getAttribute('data-billing') === billing;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    };
+
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        billing = b.getAttribute('data-billing');
+        renderPricing();
+      });
+    });
+
+    // Free trial: sends the visitor to the main app keeping plan and billing frequency
+    document.querySelectorAll('[data-trial]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var plan = btn.getAttribute('data-plan');
+        var base = (window.ATELIER_CONFIG || {}).signupUrl;
+        if (!base) { openModal(plan); return; }
+        var url = base + (base.indexOf('?') === -1 ? '?' : '&') +
+          'plan=' + encodeURIComponent(plan) + '&billing=' + billing + '&trial=14';
+        window.open(url, '_blank', 'noopener');
+      });
+    });
+
+    renderPricing();
+  }
+
+  /* ============================================================
+     WHATSAPP FLOAT
+     ============================================================ */
+  function initWhatsApp() {
+    var waBtn = document.getElementById('waFloat');
+    if (!waBtn) return;
+    var cfg = window.ATELIER_CONFIG || {};
+    var num = cfg.whatsappNumber || '51999999999';
+    var msg = encodeURIComponent(cfg.whatsappMessage || 'Hola, me interesa conocer más sobre Atelier Workshop para mi taller.');
+    waBtn.setAttribute('href', 'https://wa.me/' + num + '?text=' + msg);
+  }
+
+  /* ============================================================
+     FAQ ACCORDION (Ultra-Smooth Animation)
+     ============================================================ */
+  function initFAQ() {
+    var items = document.querySelectorAll('.faq__item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.faq__q');
+      if (!btn) return;
+
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // Close other open FAQ items for a clean single-open accordion feel
+        items.forEach(function (other) {
+          if (other !== item && other.classList.contains('is-open')) {
+            other.classList.remove('is-open');
+            var otherBtn = other.querySelector('.faq__q');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
 
   /* ============================================================
      SCROLL EFFECTS
@@ -270,18 +441,6 @@
     function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 8); }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  /* ============================================================
-     WHATSAPP FLOAT
-     ============================================================ */
-  function initWhatsApp() {
-    var waBtn = document.getElementById('waFloat');
-    if (!waBtn) return;
-    var cfg = window.ATELIER_CONFIG || {};
-    var num = cfg.whatsappNumber || '51999999999';
-    var msg = encodeURIComponent(cfg.whatsappMessage || 'Hola, me interesa conocer más sobre Atelier Workshop para mi taller.');
-    waBtn.setAttribute('href', 'https://wa.me/' + num + '?text=' + msg);
   }
 
   /* ============================================================
@@ -474,13 +633,20 @@
      ============================================================ */
   initTheme();
   initI18n();
+  initInstallLinks();
+  initServiceWorker();
   initMobileDrawer();
+  initDemoModal();
+  initPricing();
+  initWhatsApp();
+  initFAQ();
   initNav();
   initReveal();
   initLiveTelemetry();
   initScrollHex();
   initLitText();
   initCounters();
+  
 
   if (root.classList.contains('is-shot')) root.classList.remove('intro-on');
   else if (root.classList.contains('intro-on')) playIntro();
