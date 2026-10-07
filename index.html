@@ -10,6 +10,7 @@
   <!-- PWA & Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/brand/atelier-workshop-icon.svg">
   <link rel="apple-touch-icon" href="assets/brand/atelier-workshop-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
 
   <!-- Open Graph & Social Cards -->
   <meta property="og:type" content="website">
@@ -338,6 +339,183 @@
       </div>
     </section>
 
+    <!-- PRECIOS -->
+    <section class="pricing wrap" id="precios">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="pricing.eyebrow">Planes transparentes</span></p>
+        <h2 data-i18n="pricing.title">Inversión que se paga con dos órdenes al mes.</h2>
+        <p class="lead" data-i18n="pricing.lead">Todos los planes incluyen la plataforma completa y bahías ilimitadas. Prueba 14 días gratis, sin tarjeta.</p>
+      </header>
+      <div class="billing reveal" role="group" aria-label="Periodicidad de facturación">
+        <button type="button" class="billing__opt is-active" data-billing="monthly" aria-pressed="true" data-i18n="pricing.bill_monthly">Mensual</button>
+        <button type="button" class="billing__opt" data-billing="annual" aria-pressed="false"><span data-i18n="pricing.bill_annual">Anual</span> <em data-i18n="pricing.bill_save">Ahorra más de 2 meses</em></button>
+      </div>
+      <div class="pricing__grid">
+        <article class="price-card reveal" data-plan-card="go">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.go_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.go_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="139" data-annual="109">139</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="1,308" data-save="360"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f1"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f6"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f7"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-trial data-plan="go"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal price-card--featured" style="--d:100ms" data-plan-card="pro">
+          <div class="badge-featured" data-i18n="pricing.badge_featured">Recomendado</div>
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.pro_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.pro_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="269" data-annual="219">269</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="2,628" data-save="600"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.pro_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f6"></span></li>
+          </ul>
+          <button class="btn btn--primary price-card__btn" data-trial data-plan="pro"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal" style="--d:200ms" data-plan-card="max">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.max_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.max_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="489" data-annual="399">489</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="4,788" data-save="1,080"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.max_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f6"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-trial data-plan="max"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal" style="--d:300ms" data-plan-card="enterprise">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.enterprise_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.enterprise_desc"></p>
+            <div class="price-card__amount"><span class="val val--custom" data-i18n="pricing.enterprise_custom">A medida</span></div>
+            <p class="price-card__note" data-note="custom"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.enterprise_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f6"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-open-modal="demo" data-plan="enterprise" data-i18n="pricing.enterprise_btn">Contactar a ventas</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ / PREGUNTAS FRECUENTES -->
+    <section class="faq wrap" id="faq">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="faq.eyebrow">Preguntas Frecuentes</span></p>
+        <h2 data-i18n="faq.title">Resolvemos tus dudas sobre Atelier.</h2>
+        <p class="lead" data-i18n="faq.lead">Todo lo que necesitas saber antes de implementar Atelier en tu taller mecánico.</p>
+      </header>
+      <div class="faq__list">
+        <div class="faq__item is-open reveal">
+          <button class="faq__q" type="button" aria-expanded="true">
+            <span data-i18n="faq.q1">¿Qué escáneres OBD-II son compatibles con la app?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a1">Atelier es compatible con cualquier adaptador OBD-II Bluetooth estándar (ELM327 versión 1.5 o 2.1), así como escáneres profesionales con conectividad inalámbrica. No requieres hardware propietario costoso.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:70ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q2">¿Cómo funciona el modo Offline en la fosa o sótanos?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a2">La app móvil para mecánicos almacena todas las órdenes, checklist, lecturas OBD-II y fotos en la memoria local del dispositivo. En cuanto el mecánico sale de la fosa y detecta Wi-Fi o datos móviles, la sincronización con el panel web es 100% automática.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:140ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q3">¿La facturación electrónica está homologada con SUNAT?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a3">Sí. Atelier genera y envía comprobantes de pago electrónicos (Facturas, Boletas de Venta y Notas de Crédito) cumpliendo con la normativa vigente UBL 2.1 de SUNAT y con código QR oficial.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:210ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q4">¿Cómo nos ayuda el inventario FIFO a evitar pérdidas?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a4">El método FIFO (Primero en Entrar, Primero en Salir) asigna automáticamente el costo del lote más antiguo comprado a cada orden de trabajo. Así sabes con exactitud matemática el margen de ganancia real de cada reparación sin fugas de dinero.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:280ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q5">¿Cuánto tiempo toma capacitar a mi equipo de mecánicos?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a5">La interfaz móvil está diseñada para mecánicos con cero experiencia tecnológica. La curva de aprendizaje promedio es menor a 2 días y todos los planes incluyen acompañamiento y soporte local en Lima.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:350ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q6"></span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a6"></p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:420ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q7"></span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a7"></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- EQUIPO -->
     <section class="team wrap" id="equipo">
       <header class="sec-head reveal">
@@ -378,6 +556,18 @@
         </li>
       </ul>
     </section>
+
+    <!-- CTA -->
+    <section class="cta" id="instalar">
+      <div class="wrap cta__in">
+        <h2 class="reveal" data-i18n="cta.title">Instala Atelier en tu taller.</h2>
+        <p class="reveal" data-i18n="cta.desc">Usa la app móvil en la bahía y el panel web en la oficina. Elige cómo empezar.</p>
+        <div class="cta__actions reveal">
+          <a class="btn btn--light" href="#" id="installMobile" data-install="mobile"><i class="ph ph-device-mobile"></i> <span data-i18n="cta.btn_mobile">Instalar app móvil</span></a>
+          <a class="btn btn--outline-light" href="#" id="installWeb" data-install="web"><i class="ph ph-browser"></i> <span data-i18n="cta.btn_web">Instalar versión web</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="foot">
@@ -395,6 +585,63 @@
     <span class="wa-float__tooltip" data-i18n="wa.tooltip">¿Tienes dudas? Chatea con un asesor</span>
   </a>
 
+  <!-- Modal: Solicitar Demo -->
+  <div class="modal-backdrop" id="demoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="nav__ctrl modal-close" id="modalCloseBtn" aria-label="Cerrar modal">
+        <i class="ph ph-x"></i>
+      </button>
+      <div id="modalFormView">
+        <div class="modal-head">
+          <span class="eyebrow"><span class="dot"></span> <span data-i18n="modal.title">Solicitar Demostración Guiada</span></span>
+          <h3 id="modalTitle" data-i18n="modal.title">Solicitar Demostración Guiada</h3>
+          <p class="modal-sub" data-i18n="modal.desc">Déjanos tus datos y un especialista te mostrará Atelier en vivo adaptado a las necesidades de tu taller.</p>
+        </div>
+        <form class="modal-form" id="demoForm">
+          <div class="form-group">
+            <label for="demoName" data-i18n="modal.lbl_name">Tu nombre y apellido</label>
+            <input type="text" id="demoName" name="name" required placeholder="Ej. Carlos Mendoza">
+          </div>
+          <div class="form-group">
+            <label for="demoWorkshop" data-i18n="modal.lbl_workshop">Nombre de tu taller mecánico</label>
+            <input type="text" id="demoWorkshop" name="workshop" required placeholder="Ej. Taller Mecánico Los Andes">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="demoPhone" data-i18n="modal.lbl_phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="demoPhone" name="phone" required placeholder="999 123 456">
+            </div>
+            <div class="form-group">
+              <label for="demoBays" data-i18n="modal.lbl_bays">Bahías / elevadores</label>
+              <input type="number" id="demoBays" name="bays" min="1" max="50" placeholder="Ej. 3">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="demoPlan" data-i18n="modal.lbl_plan">Plan de interés</label>
+            <select id="demoPlan" name="plan">
+              <option value="go" data-i18n="modal.plan_go">Plan Go (S/ 139/mes)</option>
+              <option value="pro" selected data-i18n="modal.plan_pro">Plan Pro (S/ 269/mes)</option>
+              <option value="max" data-i18n="modal.plan_max">Plan Max (S/ 489/mes)</option>
+              <option value="enterprise" data-i18n="modal.plan_enterprise">Plan Enterprise (A medida)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block" id="modalSubmitBtn">
+            <span data-i18n="modal.btn_submit">Solicitar Demo Ahora</span> <i class="ph ph-paper-plane-right"></i>
+          </button>
+        </form>
+      </div>
+      <div id="modalSuccessView" style="display: none;" class="modal-success">
+        <div class="modal-success__icon">
+          <i class="ph ph-check-circle"></i>
+        </div>
+        <h3 data-i18n="modal.success_title">¡Solicitud recibida con éxito!</h3>
+        <p data-i18n="modal.success_msg">Nos pondremos en contacto contigo por WhatsApp en menos de 2 horas para coordinar tu demo personalizada.</p>
+        <button type="button" class="btn btn--ghost" id="modalSuccessCloseBtn" data-i18n="modal.btn_close">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js?v=13"></script>
   <script src="i18n.js?v=13"></script>
   <script src="main.js?v=13"></script>
 </body>
