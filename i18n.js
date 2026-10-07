@@ -12,8 +12,6 @@ var ATELIER_I18N = {
     'nav.team': 'Equipo',
     'nav.install': 'Instalar app',
 
-    // WhatsApp
-    'wa.tooltip': '¿Tienes dudas? Chatea con un asesor',
 
     // Hero
     'hero.eyebrow': 'Atelier Workshop · talleres mecánicos de Lima',
@@ -58,21 +56,6 @@ var ATELIER_I18N = {
     'nav.faq': 'Preguntas',
     'nav.demo': 'Pedir Demo',
     
-    // Hero (reportes IA) y contraste antes/despues
-    'hero.proof_ai': 'Reportes preventivos con IA',
-    'contrast.eyebrow': 'Antes y después',
-    'contrast.title': 'De perder dinero en la libreta a controlar cada repuesto.',
-    'contrast.old_title': 'Taller tradicional',
-    'contrast.old_1': 'Órdenes en papel y audios de WhatsApp que se pierden',
-    'contrast.old_2': 'Repuestos sin costo real y mermas que nadie explica',
-    'contrast.old_3': 'Clientes que desconfían del presupuesto',
-    'contrast.old_4': 'Cierre de caja y comprobantes a mano al final del día',
-    'contrast.new_pre': 'Con',
-    'contrast.new_1': 'Orden digital sincronizada en tiempo real, también sin internet en la fosa',
-    'contrast.new_2': 'Control exacto de repuestos por lote FIFO y margen real por reparación',
-    'contrast.new_3': 'Diagnóstico OBD-II en vivo y reportes preventivos con IA que respaldan cada cobro',
-    'contrast.new_4': 'Comprobantes electrónicos válidos ante SUNAT en menos de 2 minutos',
-
     // Producto
     'prod.eyebrow': 'Producto',
     'prod.title': 'Hecho para el trabajo real del taller.',
@@ -109,6 +92,11 @@ var ATELIER_I18N = {
     'roles.r2_f3': 'Facturación electrónica SUNAT nativa',
     'roles.r2_f4': 'Asistencia y productividad por mecánico',
 
+    // Precios
+    'pricing.eyebrow': 'Planes transparentes',
+    'pricing.title': 'Inversión que se paga con dos órdenes al mes.',
+
+
     // Equipo
     'team.eyebrow': 'El equipo',
     'team.title': 'Quiénes construyen Atelier.',
@@ -123,6 +111,103 @@ var ATELIER_I18N = {
     'team.m4_desc': 'Desarrollo de la app para mecánicos en bahía.',
     'team.m5_role': 'Backend y APIs',
     'team.m5_desc': 'APIs REST escalables y código mantenible.',
+
+
+    // FAQ
+    'faq.eyebrow': 'Preguntas Frecuentes',
+    'faq.title': 'Resolvemos tus dudas sobre Atelier.',
+    'faq.lead': 'Todo lo que necesitas saber antes de implementar Atelier en tu taller mecánico.',
+    'faq.q1': '¿Qué escáneres OBD-II son compatibles con la app?',
+    'faq.a1': 'Atelier es compatible con cualquier adaptador OBD-II Bluetooth estándar (ELM327 versión 1.5 o 2.1), así como escáneres profesionales con conectividad inalámbrica. No requieres hardware propietario costoso.',
+    'faq.q2': '¿Cómo funciona el modo Offline en la fosa o sótanos?',
+    'faq.a2': 'La app móvil para mecánicos almacena todas las órdenes, checklist, lecturas OBD-II y fotos en la memoria local del dispositivo. En cuanto el mecánico sale de la fosa y detecta Wi-Fi o datos móviles, la sincronización con el panel web es 100% automática.',
+    'faq.q3': '¿La facturación electrónica está homologada con SUNAT?',
+    'faq.a3': 'Sí. Atelier genera y envía comprobantes de pago electrónicos (Facturas, Boletas de Venta y Notas de Crédito) cumpliendo con la normativa vigente UBL 2.1 de SUNAT y con código QR oficial.',
+    'faq.q4': '¿Cómo nos ayuda el inventario FIFO a evitar pérdidas?',
+    'faq.a4': 'El método FIFO (Primero en Entrar, Primero en Salir) asigna automáticamente el costo del lote más antiguo comprado a cada orden de trabajo. Así sabes con exactitud matemática el margen de ganancia real de cada reparación sin fugas de dinero.',
+    'faq.q5': '¿Cuánto tiempo toma capacitar a mi equipo de mecánicos?',
+    'faq.a5': 'La interfaz móvil está diseñada para mecánicos con cero experiencia tecnológica. La curva de aprendizaje promedio es menor a 2 días y todos los planes incluyen acompañamiento y soporte local en Lima.',
+
+    // Modal Demo
+    'modal.title': 'Solicitar Demostración Guiada',
+    'modal.desc': 'Déjanos tus datos y un especialista te mostrará Atelier en vivo adaptado a las necesidades de tu taller.',
+    'modal.lbl_name': 'Tu nombre y apellido',
+    'modal.lbl_workshop': 'Nombre de tu taller mecánico',
+    'modal.lbl_phone': 'Teléfono / WhatsApp de contacto',
+    'modal.lbl_bays': 'Número de bahías / elevadores',
+    'modal.lbl_plan': 'Plan de interés',
+    'modal.btn_submit': 'Solicitar Demo Ahora',
+    'modal.success_title': '¡Solicitud recibida con éxito!',
+    'modal.success_msg': 'Nos pondremos en contacto contigo por WhatsApp en menos de 2 horas para coordinar tu demo personalizada.',
+    'modal.btn_close': 'Cerrar',
+
+    // WhatsApp
+    'wa.tooltip': '¿Tienes dudas? Chatea con un asesor',
+
+    // CTA & Footer
+    'cta.title': 'Instala Atelier en tu taller.',
+    'cta.desc': 'Usa la app móvil en la bahía y el panel web en la oficina. Elige cómo empezar.',
+    'cta.btn_mobile': 'Instalar app móvil',
+    'cta.btn_web': 'Instalar versión web',
+    'foot.text': 'Atelier es un producto de Andeva. Proyecto de Ingeniería de Software, Universidad Peruana de Ciencias Aplicadas.',
+
+    // Planes, prueba gratis y FAQ ampliado
+    'pricing.lead': 'Todos los planes incluyen la plataforma completa y bahías ilimitadas. Prueba 14 días gratis, sin tarjeta.',
+    'pricing.bill_monthly': 'Mensual',
+    'pricing.bill_annual': 'Anual',
+    'pricing.bill_save': 'Ahorra más de 2 meses',
+    'pricing.badge_featured': 'Recomendado',
+    'pricing.period': '/ mes',
+    'pricing.note_monthly': 'Renovación cada 30 días. Cancela o cambia de plan cuando quieras.',
+    'pricing.note_annual': 'Facturado S/ {total} al año. Ahorras S/ {save}.',
+    'pricing.note_custom': 'Cotización según sedes, dispositivos OBD-II y consumo de IA.',
+    'pricing.trial_hint': '14 días gratis. No pedimos tarjeta de crédito.',
+    'pricing.trial_btn': 'Probar 14 días gratis',
+    'pricing.go_title': 'Plan Go',
+    'pricing.go_desc': 'Para talleres que inician: ecosistema completo con FIFO, app móvil y SUNAT desde el día uno.',
+    'pricing.go_f1': 'Órdenes de trabajo, clientes y personal incluidos',
+    'pricing.go_f2': '5 usuarios, 1 sede y bahías ilimitadas',
+    'pricing.go_f3': 'App móvil Android que funciona sin internet en la fosa',
+    'pricing.go_f4': 'Inventario FIFO por lote con costo real',
+    'pricing.go_f5': 'Hasta 10 fotos de respaldo por orden',
+    'pricing.go_f6': 'Facturación SUNAT hasta 100 comprobantes al mes',
+    'pricing.go_f7': 'Soporte por correo y mesa de ayuda web (24 h)',
+    'pricing.pro_title': 'Plan Pro',
+    'pricing.pro_desc': 'Para talleres consolidados que quieren telemetría en vivo y cero límites en fotos y facturas.',
+    'pricing.pro_f1': 'Todo lo incluido en Go',
+    'pricing.pro_f2': '10 usuarios con control de acceso por roles',
+    'pricing.pro_f3': 'Telemetría OBD-II en vivo para hasta 5 vehículos VIP',
+    'pricing.pro_f4': 'Fotos y comprobantes SUNAT ilimitados',
+    'pricing.pro_f5': 'Tablero visual de bahías y citas',
+    'pricing.pro_f6': 'Soporte prioritario por WhatsApp',
+    'pricing.max_title': 'Plan Max',
+    'pricing.max_desc': 'Para talleres en crecimiento que captan flotas y entregan reportes periciales con IA.',
+    'pricing.max_f1': 'Todo lo incluido en Pro',
+    'pricing.max_f2': 'Hasta 25 usuarios y 2 sedes',
+    'pricing.max_f3': 'Listado en Atelier Bussiness para captar empresas con flotas',
+    'pricing.max_f4': 'Hasta 60 reportes periciales PDF con IA al mes',
+    'pricing.max_f5': 'Hasta 15 dispositivos OBD-II y Suite ERP Automotriz',
+    'pricing.max_f6': 'Soporte asistido con respuesta en menos de 4 h',
+    'pricing.enterprise_title': 'Plan Enterprise',
+    'pricing.enterprise_desc': 'Para cadenas, concesionarios y operadores de flotas que integran su ERP corporativo.',
+    'pricing.enterprise_custom': 'A medida',
+    'pricing.enterprise_f1': 'Todo lo incluido en Max',
+    'pricing.enterprise_f2': 'Sedes y usuarios a medida',
+    'pricing.enterprise_f3': 'Dispositivos OBD-II e IA elásticos por consumo',
+    'pricing.enterprise_f4': 'Conexión con ERP corporativo como SAP u Oracle',
+    'pricing.enterprise_f5': 'Presencia destacada en Atelier Bussiness',
+    'pricing.enterprise_f6': 'Gerente de cuenta y respuesta en menos de 1 h',
+    'pricing.enterprise_btn': 'Contactar a ventas',
+    'modal.plan_go': 'Plan Go (S/ 139/mes)',
+    'modal.plan_pro': 'Plan Pro (S/ 269/mes)',
+    'modal.plan_max': 'Plan Max (S/ 489/mes)',
+    'modal.plan_enterprise': 'Plan Enterprise (A medida)',
+    'faq.q6': '¿Hay penalidad si cancelo el servicio?',
+    'faq.a6': 'No. Los planes se renuevan cada 30 días y puedes cancelar o cambiar de nivel en cualquier momento, sin penalidades ni permanencia mínima.',
+    'faq.q7': '¿Puedo llevarme mis datos si dejo de usar Atelier?',
+    'faq.a7': 'Sí. Tus clientes, vehículos e inventarios son tuyos y puedes exportarlos completos en formatos estándar cuando quieras.',
+
+
   },
 
   en: {
@@ -135,6 +220,34 @@ var ATELIER_I18N = {
     'nav.install': 'Install app',
     'nav.faq': 'FAQ',
     'nav.demo': 'Request Demo',
+
+    // FAQ
+    'faq.eyebrow': 'Frequently Asked Questions',
+    'faq.title': 'Answers to your questions about Atelier.',
+    'faq.lead': 'Everything you need to know before implementing Atelier in your auto repair shop.',
+    'faq.q1': 'Which OBD-II scanners are compatible with the app?',
+    'faq.a1': 'Atelier is compatible with any standard Bluetooth OBD-II adapter (ELM327 v1.5 or v2.1) as well as professional wireless scanners. No expensive proprietary hardware is required.',
+    'faq.q2': 'How does Offline mode work in pits or basements?',
+    'faq.a2': 'The mechanic mobile app stores all work orders, checklists, OBD-II telemetry, and photo evidence in local device storage. As soon as the device detects Wi-Fi or cellular network, it syncs automatically with the web dashboard.',
+    'faq.q3': 'Is the electronic invoicing officially compliant with SUNAT?',
+    'faq.a3': 'Yes. Atelier generates and submits electronic invoices (Facturas, Boletas de Venta, Credit Notes) strictly following Peru SUNAT UBL 2.1 regulations with official QR codes.',
+    'faq.q4': 'How does FIFO batch inventory prevent financial leaks?',
+    'faq.a4': 'The FIFO (First In, First Out) method automatically links the purchase cost of the oldest batch to each completed work order. This provides true profit margin calculation for every repair.',
+    'faq.q5': 'How long does it take to train my workshop technicians?',
+    'faq.a5': 'The mobile interface is designed specifically for shop floor mechanics with zero technical barrier. The average learning curve is under 2 days, and all plans include local onboarding support.',
+
+    // Modal Demo
+    'modal.title': 'Request a Guided Demo',
+    'modal.desc': 'Leave your contact details and a product specialist will walk you through Atelier live, tailored to your shop.',
+    'modal.lbl_name': 'Full name',
+    'modal.lbl_workshop': 'Workshop / Garage name',
+    'modal.lbl_phone': 'Phone / WhatsApp number',
+    'modal.lbl_bays': 'Number of bays / lifts',
+    'modal.lbl_plan': 'Interested plan',
+    'modal.btn_submit': 'Request Demo Now',
+    'modal.success_title': 'Request received successfully!',
+    'modal.success_msg': 'We will reach out via WhatsApp within 2 hours to schedule your personalized live demo.',
+    'modal.btn_close': 'Close',
 
     // WhatsApp
     'wa.tooltip': 'Questions? Chat with an advisor',
@@ -161,11 +274,13 @@ var ATELIER_I18N = {
     'hero.float_fifo_title': 'Part assigned',
     'hero.float_fifo_sub': 'Oldest batch first',
     'hero.phone_note': 'Sample view',
+
     // Context / Stats
     'stats.stat1_text': 'more expensive to repair a major breakdown than to prevent it on time.',
     'stats.stat2_text': 'average age of vehicles currently in circulation in Lima.',
     'stats.stat3_text': 'of shop owners who tried management software ended up frustrated by its complexity.',
     'stats.source': 'Data from the Atelier project report, with AAP 2023 and Fundación Telefónica 2023 figures.',
+
     // How it works
     'how.eyebrow': 'How it works',
     'how.title': 'From the pit to the invoice in three steps.',
@@ -175,6 +290,7 @@ var ATELIER_I18N = {
     'how.step2_desc': 'Findings turn into quotes with labor and parts. The customer approves after reviewing photos of the damaged components.',
     'how.step3_title': 'Bill without double work',
     'how.step3_desc': 'Each spare part deducts from its purchase batch, and the work order closes with a legal SUNAT electronic invoice.',
+
     // Hero (reportes IA) y contraste antes/despues
     'hero.proof_ai': 'Preventive AI reports',
     'contrast.eyebrow': 'Before and after',
@@ -226,6 +342,10 @@ var ATELIER_I18N = {
     'roles.r2_f3': 'Native SUNAT electronic invoicing',
     'roles.r2_f4': 'Staff attendance and mechanic productivity',
 
+      // Pricing
+    'pricing.eyebrow': 'Transparent Pricing',
+    'pricing.title': 'An investment that pays for itself with two orders a month.',
+
     // Team
     'team.eyebrow': 'The Team',
     'team.title': 'Who is building Atelier.',
@@ -240,5 +360,68 @@ var ATELIER_I18N = {
     'team.m4_desc': 'Mechanic bay application development.',
     'team.m5_role': 'Backend & APIs',
     'team.m5_desc': 'Scalable REST APIs and clean maintainable code.',
+
+    // CTA & Footer
+    'cta.title': 'Install Atelier in your workshop.',
+    'cta.desc': 'Use the mobile app in the bay and the web dashboard in the office. Choose how to start.',
+    'cta.btn_mobile': 'Install mobile app',
+    'cta.btn_web': 'Install web version',
+    'foot.text': 'Atelier is an Andeva product. Software Engineering Project, Universidad Peruana de Ciencias Aplicadas.',
+
+    // Planes, prueba gratis y FAQ ampliado
+    'pricing.lead': 'Every plan includes the full platform and unlimited bays. Try it free for 14 days, no card needed.',
+    'pricing.bill_monthly': 'Monthly',
+    'pricing.bill_annual': 'Annual',
+    'pricing.bill_save': 'Save over 2 months',
+    'pricing.badge_featured': 'Recommended',
+    'pricing.period': '/ month',
+    'pricing.note_monthly': '30-day renewal. Cancel or switch plans anytime.',
+    'pricing.note_annual': 'Billed S/ {total} per year. You save S/ {save}.',
+    'pricing.note_custom': 'Quote based on branches, OBD-II devices and AI usage.',
+    'pricing.trial_hint': '14 days free. No credit card required.',
+    'pricing.trial_btn': 'Start 14-day free trial',
+    'pricing.go_title': 'Go Plan',
+    'pricing.go_desc': 'For workshops getting started: the full ecosystem with FIFO, mobile app and SUNAT from day one.',
+    'pricing.go_f1': 'Work orders, customers and staff included',
+    'pricing.go_f2': '5 users, 1 branch and unlimited bays',
+    'pricing.go_f3': 'Android mobile app that works offline in the pit',
+    'pricing.go_f4': 'FIFO batch inventory with true cost',
+    'pricing.go_f5': 'Up to 10 evidence photos per order',
+    'pricing.go_f6': 'SUNAT invoicing up to 100 documents a month',
+    'pricing.go_f7': 'Email and web help desk support (24 h)',
+    'pricing.pro_title': 'Pro Plan',
+    'pricing.pro_desc': 'For established workshops that want live telemetry and no limits on photos and invoices.',
+    'pricing.pro_f1': 'Everything included in Go',
+    'pricing.pro_f2': '10 users with role-based access',
+    'pricing.pro_f3': 'Live OBD-II telemetry for up to 5 VIP vehicles',
+    'pricing.pro_f4': 'Unlimited photos and SUNAT invoices',
+    'pricing.pro_f5': 'Visual bay and appointment board',
+    'pricing.pro_f6': 'Priority support via WhatsApp',
+    'pricing.max_title': 'Max Plan',
+    'pricing.max_desc': 'For growing workshops that win fleet clients and deliver AI expert reports.',
+    'pricing.max_f1': 'Everything included in Pro',
+    'pricing.max_f2': 'Up to 25 users and 2 branches',
+    'pricing.max_f3': 'Listing in Atelier Bussiness to win fleet companies',
+    'pricing.max_f4': 'Up to 60 AI expert PDF reports a month',
+    'pricing.max_f5': 'Up to 15 OBD-II devices and Automotive ERP Suite',
+    'pricing.max_f6': 'Assisted support with under 4 h response',
+    'pricing.enterprise_title': 'Enterprise Plan',
+    'pricing.enterprise_desc': 'For chains, dealerships and fleet operators integrating a corporate ERP.',
+    'pricing.enterprise_custom': 'Custom',
+    'pricing.enterprise_f1': 'Everything included in Max',
+    'pricing.enterprise_f2': 'Custom branches and users',
+    'pricing.enterprise_f3': 'Elastic OBD-II devices and AI by usage',
+    'pricing.enterprise_f4': 'Corporate ERP connection such as SAP or Oracle',
+    'pricing.enterprise_f5': 'Featured presence in Atelier Bussiness',
+    'pricing.enterprise_f6': 'Account manager and under 1 h response',
+    'pricing.enterprise_btn': 'Contact sales',
+    'modal.plan_go': 'Go Plan (S/ 139/mo)',
+    'modal.plan_pro': 'Pro Plan (S/ 269/mo)',
+    'modal.plan_max': 'Max Plan (S/ 489/mo)',
+    'modal.plan_enterprise': 'Enterprise Plan (Custom)',
+    'faq.q6': 'Is there a penalty if I cancel the service?',
+    'faq.a6': 'No. Plans renew every 30 days and you can cancel or change tier at any time, with no penalties or minimum term.',
+    'faq.q7': 'Can I take my data with me if I stop using Atelier?',
+    'faq.a7': 'Yes. Your customers, vehicles and inventory belong to you and can be fully exported in standard formats at any time.',
   }
 };
