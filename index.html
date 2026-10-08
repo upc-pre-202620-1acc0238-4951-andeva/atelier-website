@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier | El taller que se adelanta a la avería</title>
+  <meta name="description" content="Atelier Workshop: diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos, incluso sin señal en la fosa.">
+  <meta name="theme-color" content="#0071eb">
+  
+  <!-- PWA & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/brand/atelier-workshop-icon.svg">
+  <link rel="apple-touch-icon" href="assets/brand/atelier-workshop-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Atelier | El taller que se adelanta a la avería">
+  <meta property="og:description" content="Diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos en Lima, incluso sin señal en la fosa.">
+  <meta property="og:image" content="assets/logo-blue-black.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atelier | Software para Talleres Mecánicos">
+  <meta name="twitter:description" content="Diagnóstico OBD-II, inventario FIFO y facturación SUNAT para talleres mecánicos.">
+  <meta name="twitter:image" content="assets/logo-blue-black.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Atelier Workshop",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Android, Web",
+    "description": "Sistema de gestión integral para talleres mecánicos con diagnóstico OBD-II, inventario FIFO y facturación SUNAT.",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "PEN",
+      "lowPrice": "139",
+      "highPrice": "489",
+      "price": "139",
+      "offerCount": "4"
+    }
+  }
+  </script>
+
+  <script>
+    /* Decide antes del primer pintado si corre la intro. Se omite con reduced-motion o ?nointro. */
+    (function () {
+      var root = document.documentElement, play = true;
+      try {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) play = false;
+        if (location.search.indexOf('nointro') !== -1) play = false;
+      } catch (e) {}
+      root.classList.add(play ? 'intro-on' : 'is-ready');
+    })();
+  </script>
+  <link rel="preload" href="assets/fonts/satoshi/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/vendor/phosphor/style.css">
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+
+  <!-- Intro: hexágono gira, las letras salen del logo y el lockup viaja a la barra superior -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__bg" id="introBg"></div>
+    <div class="intro__logo logo" id="introLogo" style="--k:.5">
+      <div class="logo__inner">
+        <span class="logo__hex"></span>
+        <span class="logo__letters">
+          <span class="ltr" style="--x:9;--w:128"></span>
+          <span class="ltr" style="--x:137;--w:101"></span>
+          <span class="ltr" style="--x:238;--w:128"></span>
+          <span class="ltr" style="--x:366;--w:75"></span>
+          <span class="ltr" style="--x:441;--w:75"></span>
+          <span class="ltr" style="--x:516;--w:128"></span>
+          <span class="ltr" style="--x:644;--w:116"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__row">
+      <a class="nav__brand" href="#top" aria-label="Atelier Workshop">
+        <img src="assets/logo-blue-black.png" alt="Atelier Workshop" class="brand-logo light-only">
+        <img src="assets/logo-blue-white.png" alt="Atelier Workshop" class="brand-logo dark-only">
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#producto" data-i18n="nav.product">Producto</a>
+        <a href="#como" data-i18n="nav.how">Cómo funciona</a>
+        <a href="#roles" data-i18n="nav.roles">Roles</a>
+        <a href="#precios" data-i18n="nav.pricing">Precios</a>
+        <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+        <a href="#equipo" data-i18n="nav.team">Equipo</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="nav__ctrl lang-toggle" id="langToggle" aria-label="Cambiar idioma" title="ES / EN">
+          <span class="lang-opt lang-opt--es is-active">ES</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt lang-opt--en">EN</span>
+        </button>
+        <button class="nav__ctrl theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" title="Tema">
+          <i class="ph ph-sun light-only"></i>
+          <i class="ph ph-moon dark-only"></i>
+        </button>
+        <button class="btn btn--primary btn--sm nav__demo-btn" data-open-modal="demo" data-plan="pro" data-i18n="nav.demo">Pedir Demo</button>
+        <button class="nav__ctrl nav__menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer Móvil -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer__content">
+      <div class="mobile-drawer__top">
+        <span class="eyebrow"><span class="dot"></span> Menú</span>
+        <button class="nav__ctrl mobile-drawer__close" id="mobileDrawerClose" aria-label="Cerrar menú">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <nav class="mobile-drawer__links">
+        <a href="#producto" class="drawer-link" data-i18n="nav.product">Producto</a>
+        <a href="#como" class="drawer-link" data-i18n="nav.how">Cómo funciona</a>
+        <a href="#roles" class="drawer-link" data-i18n="nav.roles">Roles</a>
+        <a href="#precios" class="drawer-link" data-i18n="nav.pricing">Precios</a>
+        <a href="#faq" class="drawer-link" data-i18n="nav.faq">Preguntas</a>
+        <a href="#equipo" class="drawer-link" data-i18n="nav.team">Equipo</a>
+        <a href="#instalar" class="drawer-link" data-i18n="nav.install">Instalar app</a>
+      </nav>
+      <div class="mobile-drawer__footer">
+        <button class="btn btn--primary btn--block drawer-link" data-open-modal="demo" data-plan="pro" data-i18n="nav.demo">Pedir Demo</button>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero__copy">
+        <p class="eyebrow reveal" data-hero="0"><span class="dot"></span><span data-i18n="hero.eyebrow">Atelier Workshop · talleres mecánicos de Lima</span></p>
+        <h1 class="h1-stagger" data-hero="1">
+          <span class="h1-line"><span data-i18n="hero.h1_1">El taller que</span></span>
+          <span class="h1-line"><em class="h1-hl" data-i18n="hero.h1_2">se adelanta</em></span>
+          <span class="h1-line"><span data-i18n="hero.h1_3">a la avería.</span></span>
+        </h1>
+        <p class="lead lit-text reveal" data-hero="2" data-i18n="hero.lead">Diagnostica con cualquier escáner OBD-II, controla tus repuestos y emite comprobantes SUNAT válidos desde un solo sistema, incluso sin señal en la fosa.</p>
+        <div class="hero__cta reveal" data-hero="3">
+          <a class="btn btn--primary" href="#instalar"><i class="ph ph-device-mobile"></i> <span data-i18n="hero.cta_mobile">Instalar app móvil</span></a>
+          <a class="btn btn--ghost" href="#instalar"><i class="ph ph-browser"></i> <span data-i18n="hero.cta_web">Usar versión web</span></a>
+        </div>
+        <ul class="hero__proof reveal" data-hero="4">
+          <li><i class="ph ph-plugs-connected"></i><span data-i18n="hero.proof_obd">Cualquier OBD-II</span></li>
+          <li><i class="ph ph-wifi-slash"></i><span data-i18n="hero.proof_offline">Funciona sin internet</span></li>
+          <li><i class="ph ph-receipt"></i><span data-i18n="hero.proof_sunat">Comprobantes SUNAT válidos</span></li>
+          <li><i class="ph ph-brain"></i><span data-i18n="hero.proof_ai">Reportes preventivos con IA</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual reveal" data-hero="2" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="ps-top"><span data-i18n="hero.phone_top">Órdenes de hoy</span><span class="mono">09:41</span></div>
+            <div class="ps-card ps-card--live">
+              <div class="ps-row"><span class="mono ps-id">OT-0421</span><span class="chip chip--blue" data-i18n="hero.phone_progress">En progreso</span></div>
+              <div class="ps-title">Toyota Hilux</div>
+              <div class="ps-sub mono">ABC-123 · Bahía 2</div>
+              <div class="ps-timer mono">01:24:10</div>
+            </div>
+            <div class="ps-card">
+              <div class="ps-row"><span class="mono ps-id">OBD-II</span><span class="chip chip--warn" data-i18n="hero.phone_fault">1 falla</span></div>
+              <div class="ps-dtc"><span class="mono ps-code">P0301</span><span data-i18n="hero.phone_dtc">Fallo de encendido, cilindro 1</span></div>
+              <div class="ps-bars"><i style="--h:40%"></i><i style="--h:62%"></i><i style="--h:48%"></i><i style="--h:78%"></i><i style="--h:55%"></i><i style="--h:70%"></i><i style="--h:44%"></i><i style="--h:82%"></i></div>
+            </div>
+            <div class="ps-card ps-card--dim">
+              <div class="ps-row"><span class="mono ps-id">OT-0419</span><span class="chip" data-i18n="hero.phone_pending">Pendiente</span></div>
+              <div class="ps-title" data-i18n="hero.phone_brakes">Cambio de pastillas</div>
+            </div>
+          </div>
+        </div>
+        <div class="float float--a"><i class="ph ph-wifi-slash"></i><span><b data-i18n="hero.float_offline_title">Sin conexión</b><em data-i18n="hero.float_offline_sub">3 registros en cola</em></span></div>
+        <div class="float float--b"><i class="ph ph-stack"></i><span><b data-i18n="hero.float_fifo_title">Repuesto asignado</b><em data-i18n="hero.float_fifo_sub">Lote más antiguo primero</em></span></div>
+        <p class="hero__note mono" data-i18n="hero.phone_note">Vista de ejemplo</p>
+      </div>
+      <!-- Traza de telemetría decorativa -->
+      <svg class="tele-trace" viewBox="0 0 320 160" aria-hidden="true" preserveAspectRatio="none">
+        <g class="tele-trace__group">
+          <polyline class="tele-trace__line" points="0,80 40,80 50,40 60,110 70,80 120,80 130,50 140,100 150,80 200,80 210,30 220,120 230,80 280,80 290,60 300,90 310,80 320,80"/>
+          <polyline class="tele-trace__line" points="320,80 360,80 370,40 380,110 390,80 440,80 450,50 460,100 470,80 520,80 530,30 540,120 550,80 600,80 610,60 620,90 630,80 640,80"/>
+        </g>
+      </svg>
+    </section>
+
+    <!-- Isotipo decorativo scroll-driven -->
+    <div class="scroll-hex" id="scrollHex" aria-hidden="true"></div>
+
+    <!-- CONTEXTO -->
+    <section class="stats wrap" aria-label="Contexto del problema">
+      <div class="stats__grid">
+        <div class="stat reveal"><b class="stat__n" data-count-to="3" data-count-suffix="–4×">3–4×</b><p data-i18n="stats.stat1_text">más caro resulta reparar una avería grave que prevenirla a tiempo.</p></div>
+        <div class="stat reveal" style="--d:80ms"><b class="stat__n" data-count-to="14" data-count-suffix="+ años">14+ años</b><p data-i18n="stats.stat2_text">de antigüedad promedio tiene la flota vehicular en circulación en Lima.</p></div>
+        <div class="stat reveal" style="--d:160ms"><b class="stat__n" data-count-to="57.6" data-count-suffix="%">57.6%</b><p data-i18n="stats.stat3_text">de los dueños que probó un software de gestión terminó frustrado por su complejidad.</p></div>
+      </div>
+      <p class="stats__src mono" data-i18n="stats.source">Cifras del informe del proyecto Atelier, con datos de AAP 2023 y Fundación Telefónica 2023.</p>
+    </section>
+
+    <!-- CONTRASTE: gestion tradicional vs Atelier -->
+    <section class="contrast wrap" id="contraste" aria-labelledby="contrastTitle">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="contrast.eyebrow">Antes y después</span></p>
+        <h2 id="contrastTitle" data-i18n="contrast.title">De perder dinero en la libreta a controlar cada repuesto.</h2>
+      </header>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="reveal rounded-3xl border border-border-card-light bg-card-white p-8 dark:border-border-card-dark/20 dark:bg-card-black">
+          <h3 class="text-2xl font-bold text-text-black dark:text-text-white" data-i18n="contrast.old_title">Taller tradicional</h3>
+          <ul class="mt-6 flex flex-col gap-4 text-[15px] leading-snug text-text-black/70 dark:text-text-subtitles">
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_1">Órdenes en papel y audios de WhatsApp que se pierden</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_2">Repuestos sin costo real y mermas que nadie explica</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_3">Clientes que desconfían del presupuesto</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-x-circle mt-0.5 text-xl text-error"></i><span data-i18n="contrast.old_4">Cierre de caja y comprobantes a mano al final del día</span></li>
+          </ul>
+        </article>
+        <article class="reveal rounded-3xl border-2 border-primary bg-card-white p-8 shadow-lg shadow-primary/15 dark:bg-card-black" style="--d:100ms">
+          <h3 class="text-2xl font-bold text-text-black dark:text-text-white"><span data-i18n="contrast.new_pre">Con</span> <span class="font-imagotipo text-primary">Atelier</span></h3>
+          <ul class="mt-6 flex flex-col gap-4 text-[15px] leading-snug text-text-black dark:text-text-white">
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_1">Orden digital sincronizada en tiempo real, también sin internet en la fosa</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_2">Control exacto de repuestos por lote FIFO y margen real por reparación</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_3">Diagnóstico OBD-II en vivo y reportes preventivos con IA que respaldan cada cobro</span></li>
+          <li class="flex items-start gap-3"><i class="ph ph-check-circle mt-0.5 text-xl text-success"></i><span data-i18n="contrast.new_4">Comprobantes electrónicos válidos ante SUNAT en menos de 2 minutos</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="how wrap" id="como">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="how.eyebrow">Cómo funciona</span></p>
+        <h2 data-i18n="how.title">De la fosa a la factura en tres pasos.</h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__n mono">01</span>
+          <h3 data-i18n="how.step1_title">Escanea</h3>
+          <p data-i18n="how.step1_desc">Conecta cualquier adaptador OBD-II por Bluetooth. Atelier lee los códigos de falla y los sensores en vivo desde el celular del mecánico.</p>
+        </li>
+        <li class="step reveal" style="--d:100ms">
+          <span class="step__n mono">02</span>
+          <h3 data-i18n="how.step2_title">Decide con evidencia</h3>
+          <p data-i18n="how.step2_desc">Los hallazgos se vuelven presupuesto con mano de obra y repuestos. El cliente aprueba viendo las fotos de la pieza dañada.</p>
+        </li>
+        <li class="step reveal" style="--d:200ms">
+          <span class="step__n mono">03</span>
+          <h3 data-i18n="how.step3_title">Cobra sin doble trabajo</h3>
+          <p data-i18n="how.step3_desc">Cada repuesto descuenta de su lote de compra y la orden cierra con boleta o factura electrónica válida ante SUNAT.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PRODUCTO / BENTO -->
+    <section class="prod wrap" id="producto">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="prod.eyebrow">Producto</span></p>
+        <h2 data-i18n="prod.title">Hecho para el trabajo real del taller.</h2>
+        <p class="lead" data-i18n="prod.lead">Menos papel, menos fugas de dinero y ninguna orden que se pierda cuando se cae la señal.</p>
+      </header>
+      <div class="bento">
+        <article class="tile tile--a reveal">
+          <i class="ph ph-plugs-connected tile__ic"></i>
+          <h3 data-i18n="prod.tile_a_title">Telemetría OBD-II en vivo</h3>
+          <p data-i18n="prod.tile_a_desc">Códigos de falla y parámetros del motor antes de desarmar nada.</p>
+          <div class="readout mono" aria-hidden="true">
+            <div><span>DTC</span><b>P0301</b></div>
+            <div><span>RPM</span><b>780</b></div>
+            <div><span>REFRIGERANTE</span><b>92 °C</b></div>
+            <div><span>BATERÍA</span><b>13.8 V</b></div>
+            <p><i class="live"></i><span data-i18n="prod.tile_a_example">Lectura de ejemplo</span></p>
+          </div>
+        </article>
+        <article class="tile tile--b reveal" style="--d:70ms">
+          <i class="ph ph-wifi-slash tile__ic"></i>
+          <h3 data-i18n="prod.tile_b_title">Offline-First</h3>
+          <p data-i18n="prod.tile_b_desc">La fosa no tiene señal, Atelier sí funciona. Guarda todo en el equipo y sincroniza cuando el mecánico sale.</p>
+        </article>
+        <article class="tile tile--c reveal" style="--d:110ms">
+          <i class="ph ph-camera tile__ic"></i>
+          <h3 data-i18n="prod.tile_c_title">Evidencia fotográfica inmutable</h3>
+          <p data-i18n="prod.tile_c_desc">Fotos de recepción y de piezas desmontadas quedan selladas en la orden. Se acabaron los reclamos por daños previos.</p>
+        </article>
+        <article class="tile tile--d reveal" style="--d:150ms">
+          <i class="ph ph-map-pin-area tile__ic"></i>
+          <h3 data-i18n="prod.tile_d_title">Asistencia por geocerca</h3>
+          <p data-i18n="prod.tile_d_desc">Ingreso y salida validados por GPS dentro del taller.</p>
+        </article>
+        <article class="tile tile--e reveal">
+          <i class="ph ph-stack tile__ic"></i>
+          <h3 data-i18n="prod.tile_e_title">Inventario FIFO por lote</h3>
+          <p data-i18n="prod.tile_e_desc">Cada repuesto descuenta del lote más antiguo. Ves el margen real de cada orden, no una estimación.</p>
+        </article>
+        <article class="tile tile--f reveal" style="--d:80ms">
+          <i class="ph ph-receipt tile__ic"></i>
+          <h3 data-i18n="prod.tile_f_title">Facturación SUNAT</h3>
+          <p data-i18n="prod.tile_f_desc">Boletas y facturas electrónicas UBL 2.1 desde la orden terminada.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROLES -->
+    <section class="roles wrap" id="roles">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="roles.eyebrow">Dos interfaces</span></p>
+        <h2 data-i18n="roles.title">Una herramienta para cada rol.</h2>
+      </header>
+      <div class="roles__grid">
+        <article class="role role--light reveal">
+          <p class="role__tag mono" data-i18n="roles.r2_tag">PANEL WEB · EN LA OFICINA</p>
+          <h3 data-i18n="roles.r2_title">Para el dueño y jefe de taller</h3>
+          <p class="lead role__desc" data-i18n="roles.r2_desc">Tablero de bahías en tiempo real, kardex FIFO por lote, control de asistencia por GPS y emisión de boletas/facturas SUNAT.</p>
+          <ul>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f1">Tablero Kanban de órdenes y bahías</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f2">Kardex FIFO por lote con margen real</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f3">Facturación electrónica SUNAT nativa</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r2_f4">Asistencia y productividad por mecánico</span></li>
+          </ul>
+        </article>
+        <article class="role role--dark reveal" style="--d:100ms">
+          <p class="role__tag mono" data-i18n="roles.r1_tag">APP MÓVIL · EN LA BAHÍA</p>
+          <h3 data-i18n="roles.r1_title">Para el mecánico</h3>
+          <p class="lead role__desc" data-i18n="roles.r1_desc">Lectura OBD-II vía Bluetooth, captura de fotos y checklist de recepción sin necesidad de conexión permanente.</p>
+          <ul>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f1">Diagnóstico OBD-II inalámbrico</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f2">Fotos de evidencias selladas en la orden</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f3">Cronómetro y tiempos de mano de obra</span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="roles.r1_f4">Sincronización automática al recuperar señal</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="pricing wrap" id="precios">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="pricing.eyebrow">Planes transparentes</span></p>
+        <h2 data-i18n="pricing.title">Inversión que se paga con dos órdenes al mes.</h2>
+        <p class="lead" data-i18n="pricing.lead">Todos los planes incluyen la plataforma completa y bahías ilimitadas. Prueba 14 días gratis, sin tarjeta.</p>
+      </header>
+      <div class="billing reveal" role="group" aria-label="Periodicidad de facturación">
+        <button type="button" class="billing__opt is-active" data-billing="monthly" aria-pressed="true" data-i18n="pricing.bill_monthly">Mensual</button>
+        <button type="button" class="billing__opt" data-billing="annual" aria-pressed="false"><span data-i18n="pricing.bill_annual">Anual</span> <em data-i18n="pricing.bill_save">Ahorra más de 2 meses</em></button>
+      </div>
+      <div class="pricing__grid">
+        <article class="price-card reveal" data-plan-card="go">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.go_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.go_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="139" data-annual="109">139</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="1,308" data-save="360"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f1"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f6"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.go_f7"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-trial data-plan="go"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal price-card--featured" style="--d:100ms" data-plan-card="pro">
+          <div class="badge-featured" data-i18n="pricing.badge_featured">Recomendado</div>
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.pro_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.pro_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="269" data-annual="219">269</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="2,628" data-save="600"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.pro_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.pro_f6"></span></li>
+          </ul>
+          <button class="btn btn--primary price-card__btn" data-trial data-plan="pro"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal" style="--d:200ms" data-plan-card="max">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.max_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.max_desc"></p>
+            <div class="price-card__amount">
+              <span class="currency">S/</span>
+              <span class="val" data-monthly="489" data-annual="399">489</span>
+              <span class="period" data-i18n="pricing.period">/ mes</span>
+            </div>
+            <p class="price-card__note" data-note="billing" data-total="4,788" data-save="1,080"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.max_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.max_f6"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-trial data-plan="max"><span data-i18n="pricing.trial_btn">Probar 14 días gratis</span> <i class="ph ph-arrow-right"></i></button>
+          <p class="price-card__hint" data-i18n="pricing.trial_hint">14 días gratis. No pedimos tarjeta de crédito.</p>
+        </article>
+
+        <article class="price-card reveal" style="--d:300ms" data-plan-card="enterprise">
+          <div class="price-card__head">
+            <h3 class="price-card__title" data-i18n="pricing.enterprise_title"></h3>
+            <p class="price-card__desc" data-i18n="pricing.enterprise_desc"></p>
+            <div class="price-card__amount"><span class="val val--custom" data-i18n="pricing.enterprise_custom">A medida</span></div>
+            <p class="price-card__note" data-note="custom"></p>
+          </div>
+          <ul class="price-card__list">
+            <li><i class="ph ph-check-circle"></i><b data-i18n="pricing.enterprise_f1"></b></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f2"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f3"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f4"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f5"></span></li>
+            <li><i class="ph ph-check-circle"></i><span data-i18n="pricing.enterprise_f6"></span></li>
+          </ul>
+          <button class="btn btn--ghost price-card__btn" data-open-modal="demo" data-plan="enterprise" data-i18n="pricing.enterprise_btn">Contactar a ventas</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ / PREGUNTAS FRECUENTES -->
+    <section class="faq wrap" id="faq">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="faq.eyebrow">Preguntas Frecuentes</span></p>
+        <h2 data-i18n="faq.title">Resolvemos tus dudas sobre Atelier.</h2>
+        <p class="lead" data-i18n="faq.lead">Todo lo que necesitas saber antes de implementar Atelier en tu taller mecánico.</p>
+      </header>
+      <div class="faq__list">
+        <div class="faq__item is-open reveal">
+          <button class="faq__q" type="button" aria-expanded="true">
+            <span data-i18n="faq.q1">¿Qué escáneres OBD-II son compatibles con la app?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a1">Atelier es compatible con cualquier adaptador OBD-II Bluetooth estándar (ELM327 versión 1.5 o 2.1), así como escáneres profesionales con conectividad inalámbrica. No requieres hardware propietario costoso.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:70ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q2">¿Cómo funciona el modo Offline en la fosa o sótanos?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a2">La app móvil para mecánicos almacena todas las órdenes, checklist, lecturas OBD-II y fotos en la memoria local del dispositivo. En cuanto el mecánico sale de la fosa y detecta Wi-Fi o datos móviles, la sincronización con el panel web es 100% automática.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:140ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q3">¿La facturación electrónica está homologada con SUNAT?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a3">Sí. Atelier genera y envía comprobantes de pago electrónicos (Facturas, Boletas de Venta y Notas de Crédito) cumpliendo con la normativa vigente UBL 2.1 de SUNAT y con código QR oficial.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:210ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q4">¿Cómo nos ayuda el inventario FIFO a evitar pérdidas?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a4">El método FIFO (Primero en Entrar, Primero en Salir) asigna automáticamente el costo del lote más antiguo comprado a cada orden de trabajo. Así sabes con exactitud matemática el margen de ganancia real de cada reparación sin fugas de dinero.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:280ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q5">¿Cuánto tiempo toma capacitar a mi equipo de mecánicos?</span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a5">La interfaz móvil está diseñada para mecánicos con cero experiencia tecnológica. La curva de aprendizaje promedio es menor a 2 días y todos los planes incluyen acompañamiento y soporte local en Lima.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:350ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q6"></span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a6"></p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" style="--d:420ms">
+          <button class="faq__q" type="button" aria-expanded="false">
+            <span data-i18n="faq.q7"></span>
+            <i class="ph ph-plus"></i>
+          </button>
+          <div class="faq__collapse">
+            <div class="faq__a"><p data-i18n="faq.a7"></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="team wrap" id="equipo">
+      <header class="sec-head reveal">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="team.eyebrow">El equipo</span></p>
+        <h2 data-i18n="team.title">Quiénes construyen Atelier.</h2>
+        <p class="lead" data-i18n="team.lead">Ingeniería de Software de la Universidad Peruana de Ciencias Aplicadas (UPC). Desarrollamos cerca de los talleres de Lima.</p>
+      </header>
+      <ul class="team__row">
+        <li class="member reveal">
+          <div class="member__ph"><img src="assets/team/daniel.jpg" alt="Luis Daniel Granda Ibarra" width="320" height="400" loading="lazy"></div>
+          <h3>Luis Daniel<br>Granda Ibarra</h3>
+          <p class="member__role mono" data-i18n="team.m1_role">Frontend y UX</p>
+          <p class="member__line" data-i18n="team.m1_desc">Diseño de interfaz y experiencia de usuario para talleres.</p>
+        </li>
+        <li class="member reveal" style="--d:70ms">
+          <div class="member__ph"><img src="assets/team/joel.jpg" alt="Joel Huamani Estefanero" width="320" height="400" loading="lazy"></div>
+          <h3>Joel<br>Huamani Estefanero</h3>
+          <p class="member__role mono" data-i18n="team.m2_role">Líder de Proyecto</p>
+          <p class="member__line" data-i18n="team.m2_desc">Arquitectura del sistema y coordinación técnica.</p>
+        </li>
+        <li class="member reveal" style="--d:140ms">
+          <div class="member__ph"><img src="assets/team/alvaro.jpg" alt="Alvaro Rocha Cotrina" width="320" height="400" loading="lazy"></div>
+          <h3>Alvaro<br>Rocha Cotrina</h3>
+          <p class="member__role mono" data-i18n="team.m3_role">Backend y Base de Datos</p>
+          <p class="member__line" data-i18n="team.m3_desc">Lógica de negocio, APIs y persistencia de datos.</p>
+        </li>
+        <li class="member reveal" style="--d:210ms">
+          <div class="member__ph"><img src="assets/team/adiel.jpg" alt="Adiel Abdiaz Sanchez Santin" width="320" height="400" loading="lazy"></div>
+          <h3>Adiel<br>Sanchez Santin</h3>
+          <p class="member__role mono" data-i18n="team.m4_role">Móvil y Offline</p>
+          <p class="member__line" data-i18n="team.m4_desc">Desarrollo de la app para mecánicos en bahía.</p>
+        </li>
+        <li class="member reveal" style="--d:280ms">
+          <div class="member__ph"><img src="assets/team/mauricio.jpg" alt="Mauricio Teran Zavala" width="320" height="400" loading="lazy"></div>
+          <h3>Mauricio<br>Teran Zavala</h3>
+          <p class="member__role mono" data-i18n="team.m5_role">Backend y APIs</p>
+          <p class="member__line" data-i18n="team.m5_desc">APIs REST escalables y código mantenible.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="instalar">
+      <div class="wrap cta__in">
+        <h2 class="reveal" data-i18n="cta.title">Instala Atelier en tu taller.</h2>
+        <p class="reveal" data-i18n="cta.desc">Usa la app móvil en la bahía y el panel web en la oficina. Elige cómo empezar.</p>
+        <div class="cta__actions reveal">
+          <a class="btn btn--light" href="#" id="installMobile" data-install="mobile"><i class="ph ph-device-mobile"></i> <span data-i18n="cta.btn_mobile">Instalar app móvil</span></a>
+          <a class="btn btn--outline-light" href="#" id="installWeb" data-install="web"><i class="ph ph-browser"></i> <span data-i18n="cta.btn_web">Instalar versión web</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__row">
+      <a class="foot__brand" href="#top" aria-label="Atelier Workshop">
+        <img src="assets/logo-blue-white.png" alt="Atelier Workshop" class="brand-logo">
+      </a>
+      <p data-i18n="foot.text">Atelier es un producto de Andeva. Proyecto de Ingeniería de Software, Universidad Peruana de Ciencias Aplicadas.</p>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <i class="ph ph-whatsapp-logo"></i>
+    <span class="wa-float__tooltip" data-i18n="wa.tooltip">¿Tienes dudas? Chatea con un asesor</span>
+  </a>
+
+  <!-- Modal: Solicitar Demo -->
+  <div class="modal-backdrop" id="demoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="nav__ctrl modal-close" id="modalCloseBtn" aria-label="Cerrar modal">
+        <i class="ph ph-x"></i>
+      </button>
+      <div id="modalFormView">
+        <div class="modal-head">
+          <span class="eyebrow"><span class="dot"></span> <span data-i18n="modal.title">Solicitar Demostración Guiada</span></span>
+          <h3 id="modalTitle" data-i18n="modal.title">Solicitar Demostración Guiada</h3>
+          <p class="modal-sub" data-i18n="modal.desc">Déjanos tus datos y un especialista te mostrará Atelier en vivo adaptado a las necesidades de tu taller.</p>
+        </div>
+        <form class="modal-form" id="demoForm">
+          <div class="form-group">
+            <label for="demoName" data-i18n="modal.lbl_name">Tu nombre y apellido</label>
+            <input type="text" id="demoName" name="name" required placeholder="Ej. Carlos Mendoza">
+          </div>
+          <div class="form-group">
+            <label for="demoWorkshop" data-i18n="modal.lbl_workshop">Nombre de tu taller mecánico</label>
+            <input type="text" id="demoWorkshop" name="workshop" required placeholder="Ej. Taller Mecánico Los Andes">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="demoPhone" data-i18n="modal.lbl_phone">Teléfono / WhatsApp</label>
+              <input type="tel" id="demoPhone" name="phone" required placeholder="999 123 456">
+            </div>
+            <div class="form-group">
+              <label for="demoBays" data-i18n="modal.lbl_bays">Bahías / elevadores</label>
+              <input type="number" id="demoBays" name="bays" min="1" max="50" placeholder="Ej. 3">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="demoPlan" data-i18n="modal.lbl_plan">Plan de interés</label>
+            <select id="demoPlan" name="plan">
+              <option value="go" data-i18n="modal.plan_go">Plan Go (S/ 139/mes)</option>
+              <option value="pro" selected data-i18n="modal.plan_pro">Plan Pro (S/ 269/mes)</option>
+              <option value="max" data-i18n="modal.plan_max">Plan Max (S/ 489/mes)</option>
+              <option value="enterprise" data-i18n="modal.plan_enterprise">Plan Enterprise (A medida)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block" id="modalSubmitBtn">
+            <span data-i18n="modal.btn_submit">Solicitar Demo Ahora</span> <i class="ph ph-paper-plane-right"></i>
+          </button>
+        </form>
+      </div>
+      <div id="modalSuccessView" style="display: none;" class="modal-success">
+        <div class="modal-success__icon">
+          <i class="ph ph-check-circle"></i>
+        </div>
+        <h3 data-i18n="modal.success_title">¡Solicitud recibida con éxito!</h3>
+        <p data-i18n="modal.success_msg">Nos pondremos en contacto contigo por WhatsApp en menos de 2 horas para coordinar tu demo personalizada.</p>
+        <button type="button" class="btn btn--ghost" id="modalSuccessCloseBtn" data-i18n="modal.btn_close">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js?v=13"></script>
+  <script src="i18n.js?v=13"></script>
+  <script src="main.js?v=13"></script>
+</body>
+</html>
